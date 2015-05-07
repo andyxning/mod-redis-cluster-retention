@@ -25,8 +25,8 @@ has a password and run in a different port instead the default 6379.
 
 # Usage 
 Assuming Shinken is installed under standard directory
-* install **redis-py-shinken==0.2.0**(this version is suggested to be used 
-in production)
+* install **redis-py-cluster==0.2.0**(this version is suggested to be used 
+in production and we use the api exposed by redis-py-cluster 0.2.0)
 * copy files under `module` directory to 
 `/var/lib/shinken/modules/redis-cluster-retention`(you should create 
 directory `redis-cluster-retention` first)
