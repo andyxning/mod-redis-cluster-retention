@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2009-2012:
+# Copyright (C) 2015-2015:
 #    andy.xning@gmail.com
 
 try:
