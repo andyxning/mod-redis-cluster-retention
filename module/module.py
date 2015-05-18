@@ -81,14 +81,14 @@ class RedisClusterRetentionScheduler(BaseModule):
             self.rc = RedisCluster(startup_nodes=self.servers)
 
     def _get_host_key(self, h_name):
-        host_key = '%s:HOST:%s' % (self.key_prefix, h_name) \
-                   if self.key_prefix else 'HOST:%s' % h_name
+        host_key = '%s-HOST-%s' % (self.key_prefix, h_name) \
+                   if self.key_prefix else 'HOST-%s' % h_name
         return host_key
 
     def _get_service_key(self, h_name, s_name):
-        service_key = '%s:SERVICE:%s:%s' % (self.key_prefix, h_name, s_name)\
+        service_key = '%s-SERVICE-%s,%s' % (self.key_prefix, h_name, s_name)\
                       if self.key_prefix \
-                      else 'SERVICE:%s:%s' % (h_name, s_name)
+                      else 'SERVICE-%s,%s' % (h_name, s_name)
         return service_key
 
     def hook_save_retention(self, daemon):
