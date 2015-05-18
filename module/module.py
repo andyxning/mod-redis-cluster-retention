@@ -48,7 +48,7 @@ def get_instance(plugin):
     servers = getattr(plugin, 'servers', '127.0.0.1:6379')
     password = getattr(plugin, 'password', '')
     key_prefix = getattr(plugin, 'key_prefix', '')
-    expire_time = getattr(plugin, 'expire_time', 0)
+    expire_time = int(getattr(plugin, 'expire_time', 0))
 
     instance = RedisClusterRetentionScheduler(plugin, servers, password,
                                               key_prefix, expire_time)
