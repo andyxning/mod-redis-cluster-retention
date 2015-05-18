@@ -3,16 +3,27 @@ retention module for Shinken Scheduler with **Redis Cluster** with
 [redis-py-cluster](https://github.com/Grokzen/redis-py-cluster)
 
 # Features
-* redis `key prefix`, so if we use multiple Shinken setups with single 
-Redis server, then we can make sure that all keys from different Shinken 
-setups can be absolutely unique by using different prefixes.
-  * We can only make sure that only one `host_name + service_description` can 
-  exist in a single Shinken setup. If we have many Shinken setups, we can 
-  not make sure all `host_name + service_description` be unique.
- 
-* redis `servers` and `password`, this is useful if your Redis cluster servers 
-has a password and run in a different port instead the default 6379. 
-`servers` has the format of `host1:port1, host2:port2,...,hostn:portn`
+* redis `key prefix`
+  * if we use multiple Shinken setups with single Redis server, then we can 
+  make sure that all keys from different Shinken setups can be absolutely 
+  unique by using different prefixes.
+  * Reason 
+    * We can only make sure that only one `host_name + service_description` 
+    can exist in a single Shinken setup. If we have many Shinken setups, we can 
+    not make sure all `host_name + service_description` be unique.
+  
+* redis `expire time`
+  * In case we change the configuration of Shinken, some service
+  or host retention info will be deleted and then become useless. We can
+  then add an expire time to each host or service info to make the useful
+  retention persistent long by updating the expire time every time we save
+  the retention info and the useless ones expired sometime and deleted
+  automatically by Redis.
+  
+* redis `servers` and `password`
+  * this is useful if your Redis cluster servers has a password and run in a 
+  different port instead the default 6379. `servers` has the format of 
+  `host1:port1, host2:port2,...,hostn:portn` 
   * If you do not specify `servers`, it will connect to Redis instance 
   running at `127.0.0.1` with default port `6379` with no password
   * If you do not specify `password`, it will connect to Redis 
