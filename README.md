@@ -2,6 +2,9 @@
 retention module for Shinken Scheduler with **Redis Cluster** with 
 [redis-py-cluster](https://github.com/Grokzen/redis-py-cluster)
 
+# reliability and usability
+We use this Scheduler module in **Production** environment.
+
 # Features
 * redis `key prefix`
   * if we use multiple Shinken setups with single Redis server, then we can 
